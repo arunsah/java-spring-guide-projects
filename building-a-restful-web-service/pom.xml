@@ -7,9 +7,7 @@
     <artifactId>java-spring-guide-projects</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>java-spring-guide-projects</groupId>
   <artifactId>building-a-restful-web-service</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>building-a-restful-web-service</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -22,5 +20,32 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-web</artifactId>
+	    <version>2.1.4.RELEASE</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+	<dependency>
+	    <groupId>com.jayway.jsonpath</groupId>
+	    <artifactId>json-path</artifactId>
+	    <version>2.4.0</version>
+	</dependency>
+		
+
+    
+    
   </dependencies>
+  
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
