@@ -10,5 +10,11 @@
 	<body>
 		<h1>Welcome to Hello Page for Spring Security Example</h1>
 		
+		<h1 th:inline="text">
+			Hello [[${#httpServletRequest.remoteUser}]] !
+		</h1>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Log out"/>
+		</form>
 	</body>
 </html>

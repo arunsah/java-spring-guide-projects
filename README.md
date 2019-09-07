@@ -16,6 +16,7 @@ https://spring.io/guides/gs/consuming-rest/
 
 ### Securing a Web Application ###
 https://spring.io/guides/gs/securing-web/
+https://stackoverflow.com/questions/36697663/circular-view-path-error-spring-boot/41918545
 
 
 
