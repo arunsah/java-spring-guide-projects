@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello CORS</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://localhost:9001/greeting"
+            }).then(function (data, status, jqxhr) {
+                $('.txt').append("http://localhost:9001/greeting-javaconfig");
+                //$('.txt').append(data.id);
+                //$('.txt').append(data.content);
+                $('.txt').append(JSON.stringify(data));
+                $('.txt').append("</br>");
+                console.log(jqxhr);
+                console.log(data);
+            });
+
+
+            $.ajax({
+                url: "http://localhost:9001/greeting-javaconfig"
+
+            }).then(function (data, status, jqxhr) {
+                $('.txt').append("http://localhost:9001/greeting-javaconfig");
+                //$('.txt').append(data.id);
+                //$('.txt').append(data.content);
+                $('.txt').append(JSON.stringify(data));
+                $('.txt').append("</br>");
+                console.log(jqxhr);
+                console.log(data);
+            });
+
+            $.ajax({
+                url: "http://localhost:9001/hi"
+            }).then(function (data, status, jqxhr) {
+                $('.txt').append("http://localhost:9001/hi");
+                //$('.txt').append(data.id);
+                //$('.txt').append(data.content);
+                $('.txt').append(JSON.stringify(data));
+                $('.txt').append("</br>");
+                console.log(jqxhr);
+                console.log(data);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <p class="txt"></p>
+
+    </div>
+
+</body>
+
+</html>

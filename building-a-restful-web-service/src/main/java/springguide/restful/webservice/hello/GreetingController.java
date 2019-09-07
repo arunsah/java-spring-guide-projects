@@ -2,11 +2,14 @@ package springguide.restful.webservice.hello;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class GreetingController {
 
 	private static final String template="Hello, %s!";
@@ -18,4 +21,20 @@ public class GreetingController {
 		return new Greeting(counter.incrementAndGet(),
 				String.format(template, name));
 	}
+	
+	// todo: working http://127.0.0.1:5500
+	// @CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/hi")
+	// @RequestMapping(method=GET)
+	public Greeting greetingHi(@RequestParam(value="name", defaultValue="World") String name) {
+		return new Greeting(counter.incrementAndGet(),
+				String.format("Hi, %s!", name));
+	}
+	
+	@GetMapping("/greeting-javaconfig")
+    public Greeting greetingWithJavaconfig(@RequestParam(required=false, defaultValue="World") String name) {
+        System.out.println("==== in greeting ====");
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
 }
