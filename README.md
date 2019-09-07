@@ -14,6 +14,9 @@ https://spring.io/guides/gs/rest-service-cors/
 ### Consuming a RESTful Web Service ###
 https://spring.io/guides/gs/consuming-rest/
 
+### Securing a Web Application ###
+https://spring.io/guides/gs/securing-web/
+
 
 
 

@@ -8,5 +8,6 @@
   <modules>
     <module>building-a-restful-web-service</module>
     <module>consuming-restful-webservice</module>
+    <module>securing-web-apps</module>
   </modules>
 </project>
