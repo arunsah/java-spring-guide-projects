@@ -18,11 +18,11 @@ public class MvcConfig implements WebMvcConfigurer{
 		
 	}
 	
-	@Bean
-    public InternalResourceViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        //resolver.setPrefix("/jsp/");
-        resolver.setSuffix(".html");
-        return resolver;
-    }
+//	@Bean
+//    public InternalResourceViewResolver internalResourceViewResolver() {
+//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        //resolver.setPrefix("/jsp/");
+//        resolver.setSuffix(".html");
+//        return resolver;
+//    }
 }
