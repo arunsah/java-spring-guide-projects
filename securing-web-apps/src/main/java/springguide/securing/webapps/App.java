@@ -18,49 +18,45 @@ import springguide.securing.webapps.storage.StorageService;
  * Hello world!
  *
  */
-@ComponentScan(basePackages = {"springguide.securing.webapps.storage", "springguide.securing.webapps", "springguide.securing.webapps.hello"})
-@SpringBootApplication(scanBasePackages={
-		"springguide.securing.webapps", "springguide.securing.webapps.hello", "springguide.securing.webapps.storage"})
+@ComponentScan(basePackages = { "springguide.securing.webapps.storage", "springguide.securing.webapps",
+		"springguide.securing.webapps.hello" })
+@SpringBootApplication(scanBasePackages = { "springguide.securing.webapps", "springguide.securing.webapps.hello",
+		"springguide.securing.webapps.storage" })
 @EnableConfigurationProperties(StorageProperties.class)
-public class App implements CommandLineRunner 
-{
-	 @Autowired
-	    ApplicationContext applicationContext;
-	 
-    public static void main( String[] args ) throws Throwable
-    {
-    	
-        SpringApplication.run(App.class, args);
-        
-    }
-    
-    @Override
-    public void run(String... args) throws Exception {
+public class App implements CommandLineRunner {
+	@Autowired
+	ApplicationContext applicationContext;
 
-        String[] beans = applicationContext.getBeanDefinitionNames();
-        Arrays.sort(beans);
-        for (String bean : beans) {
-            System.out.println(bean);
-        }
+	public static void main(String[] args) throws Throwable {
 
-    }
+		SpringApplication.run(App.class, args);
 
-    
-    
-    private void printBeans() {
-    	System.out.println("0 Printing all beans...");
-    	System.out.println(Arrays.asList(applicationContext.getBeanDefinitionNames()));
-    	
-    }
-   
-    
-    @Bean
-    CommandLineRunner init(final StorageService storageService) {
-    	System.out.println("Printing all beans...");
-    	System.out.println(Arrays.asList(applicationContext.getBeanDefinitionNames()));
-    	return args->{
-    		storageService.deleteAll();
-    		storageService.init();
-    	};
-    }
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		String[] beans = applicationContext.getBeanDefinitionNames();
+		Arrays.sort(beans);
+		for (String bean : beans) {
+			System.out.println(bean);
+		}
+
+	}
+
+	private void printBeans() {
+		System.out.println("Printing all beans...");
+		System.out.println(Arrays.asList(applicationContext.getBeanDefinitionNames()));
+
+	}
+
+	@Bean
+	CommandLineRunner init(final StorageService storageService) {
+//    	System.out.println("Printing all beans...");
+//    	System.out.println(Arrays.asList(applicationContext.getBeanDefinitionNames()));
+		return args -> {
+			storageService.deleteAll();
+			storageService.init();
+		};
+	}
 }

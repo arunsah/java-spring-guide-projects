@@ -8,25 +8,26 @@
 
 <body>
 	<h1>Welcome to FileUpload Page for Spring Security Example</h1>
-	
+
 
 	<div th:if="${message}">
-		<h2 th:text="${message}"/>
+		<h2 th:text="${message}" />
 	</div>
 	<div th:if="${param.logout}">You have been logged out.</div>
 
 	<div>
-	<form th:action="@{/fileupload}" enctype="multipart/form-data" method="post">
-		
-		<input type="file" id="file" name="file" />
-		<input type="submit" value="Upload" />
-	</form>
+		<form th:action="@{/fileupload}" enctype="multipart/form-data"
+			method="post">
+
+			<input type="file" id="file" name="file" /> <input type="submit"
+				value="Upload" />
+		</form>
 	</div>
-	
+
 	<div>
 		<ul>
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
+			<li th:each="file : ${files}"><a th:href="${file}"
+				th:text="${file}" />
 		</ul>
 	</div>
 

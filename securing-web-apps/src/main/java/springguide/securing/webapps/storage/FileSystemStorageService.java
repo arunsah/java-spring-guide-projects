@@ -21,8 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileSystemStorageService implements StorageService {
 
 	private final Path rootLocation;
-	
-	
+
 	@Autowired
 	public FileSystemStorageService(StorageProperties properties) {
 		this.rootLocation = Paths.get(properties.getLocation());
@@ -33,10 +32,10 @@ public class FileSystemStorageService implements StorageService {
 		// TODO Auto-generated method stub
 		try {
 			Files.createDirectories(rootLocation);
-		}catch(IOException e) {
+		} catch (IOException e) {
 			throw new StorageException("Could not initialized storage", e);
 		}
-		
+
 	}
 
 	@Override
@@ -44,16 +43,17 @@ public class FileSystemStorageService implements StorageService {
 		// TODO Auto-generated method stub
 		String filename = StringUtils.cleanPath(file.getOriginalFilename());
 		try {
-			if(file.isEmpty()) {
+			if (file.isEmpty()) {
 				throw new StorageException("Filed to store empty file " + filename);
 			}
-			if(filename.contains("..")) {
-				throw new StorageException("Cannot store file with relative path outside current firectory " + filename);
+			if (filename.contains("..")) {
+				throw new StorageException(
+						"Cannot store file with relative path outside current firectory " + filename);
 			}
-			try (InputStream inputStream = file.getInputStream()){
+			try (InputStream inputStream = file.getInputStream()) {
 				Files.copy(inputStream, this.rootLocation.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
 			}
-		}catch(IOException e) {
+		} catch (IOException e) {
 			throw new StorageException("Filed to store file " + filename, e);
 		}
 	}
@@ -62,10 +62,9 @@ public class FileSystemStorageService implements StorageService {
 	public Stream<Path> loadAll() {
 		// TODO Auto-generated method stub
 		try {
-			return Files.walk(this.rootLocation, 1)
-					.filter(path-> !path.equals(this.rootLocation))
+			return Files.walk(this.rootLocation, 1).filter(path -> !path.equals(this.rootLocation))
 					.map(this.rootLocation::relativize);
-		}catch(IOException e) {
+		} catch (IOException e) {
 			throw new StorageException("Failed to read stored files", e);
 		}
 	}
@@ -81,14 +80,14 @@ public class FileSystemStorageService implements StorageService {
 		// TODO Auto-generated method stub
 
 		try {
-			Path file=load(filename);
+			Path file = load(filename);
 			Resource resource = new UrlResource(file.toUri());
-			if(resource.exists() || resource.isReadable()) {
+			if (resource.exists() || resource.isReadable()) {
 				return resource;
-			}else {
+			} else {
 				throw new StorageFileNotFoundException("Could not read file: " + filename);
 			}
-		}catch(MalformedURLException e) {
+		} catch (MalformedURLException e) {
 			throw new StorageFileNotFoundException("Could not read file: " + filename);
 		}
 	}
@@ -97,7 +96,7 @@ public class FileSystemStorageService implements StorageService {
 	public void deleteAll() {
 		// TODO Auto-generated method stub
 		FileSystemUtils.deleteRecursively(rootLocation.toFile());
-		
+
 	}
 
 }

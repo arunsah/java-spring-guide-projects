@@ -7,20 +7,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-public class MvcConfig implements WebMvcConfigurer{
+public class MvcConfig implements WebMvcConfigurer {
 
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/home").setViewName("home");
 		registry.addViewController("/").setViewName("home");
-		
+
 		registry.addViewController("/hello").setViewName("hello");
 		registry.addViewController("/fileupload").setViewName("fileupload");
 		registry.addViewController("/login").setViewName("login");
-		
-		
-		
+
 	}
-	
+
 //	@Bean
 //    public InternalResourceViewResolver internalResourceViewResolver() {
 //        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
