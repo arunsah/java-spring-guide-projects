@@ -30,6 +30,54 @@ https://spring.io/guides/gs/uploading-files/
 
 Build success
 
+#### Securing using: ####
+##### Spring Boot Security - Password Encoding Using BCrypt #####
+ https://www.javainuse.com/spring/boot_security_jdbc_authentication_bcrypt
+
+- create table:
+
+```sql
+create table if not exists user_security(
+	id int not null auto_increment primary key,
+	username varchar(100),
+	password varchar(255),
+	email varchar(255) default null,
+	active varchar(10) default 'YES',
+	role varchar(50) default 'USER',
+	created datetime default NOW()
+);
+```
+
+- table structure:
+
+```
+mysql> desc user_security;
++----------+--------------+------+-----+-------------------+-------------------+
+| Field    | Type         | Null | Key | Default           | Extra             |
++----------+--------------+------+-----+-------------------+-------------------+
+| id       | int(11)      | NO   | PRI | NULL              | auto_increment    |
+| username | varchar(100) | YES  |     | NULL              |                   |
+| password | varchar(255) | YES  |     | NULL              |                   |
+| email    | varchar(255) | YES  |     | NULL              |                   |
+| active   | varchar(10)  | YES  |     | YES               |                   |
+| role     | varchar(50)  | YES  |     | USER              |                   |
+| created  | datetime     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++----------+--------------+------+-----+-------------------+-------------------+
+7 rows in set (0.00 sec)
+```
+
+- inserting data:
+
+```
+insert into user_security (username, password) values('tom', 'tomtom');
+
+
+```
+
+#### Spring Boot Security REST + JPA + Hibernate + MySQL CRUD Example ####
+https://www.concretepage.com/spring-boot/spring-boot-security-rest-jpa-hibernate-mysql-crud-example
+
+
 #### Scheduling Tasks ####
 https://spring.io/guides/gs/scheduling-tasks/
 

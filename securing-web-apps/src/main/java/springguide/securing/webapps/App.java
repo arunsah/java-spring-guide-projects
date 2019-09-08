@@ -21,9 +21,9 @@ import springguide.securing.webapps.storage.StorageService;
  */
 @EnableScheduling
 @ComponentScan(basePackages = { "springguide.securing.webapps.storage", "springguide.securing.webapps",
-		"springguide.securing.webapps.hello" })
+		"springguide.securing.webapps.hello" , "springguide.securing.webapps.usersecurity"})
 @SpringBootApplication(scanBasePackages = { "springguide.securing.webapps", "springguide.securing.webapps.hello",
-		"springguide.securing.webapps.storage" })
+		"springguide.securing.webapps.storage", "springguide.securing.webapps.usersecurity" })
 @EnableConfigurationProperties(StorageProperties.class)
 public class App implements CommandLineRunner {
 	@Autowired
