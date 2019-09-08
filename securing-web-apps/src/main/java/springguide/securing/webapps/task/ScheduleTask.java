@@ -15,7 +15,7 @@ public class ScheduleTask {
 	private static final Logger log=LoggerFactory.getLogger(ScheduleTask.class);
 	private static final SimpleDateFormat date=new SimpleDateFormat("HH:mm:ss");
 	
-	@Scheduled(fixedRate = 1000)
+	@Scheduled(fixedRate = 5000)
 	public void reportCurrentTime() {
 		log.info("The time is {}", date.format(new Date()));
 	}
