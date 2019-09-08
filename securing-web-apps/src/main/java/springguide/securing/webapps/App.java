@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import springguide.securing.webapps.storage.StorageProperties;
 import springguide.securing.webapps.storage.StorageService;
@@ -18,6 +19,7 @@ import springguide.securing.webapps.storage.StorageService;
  * Hello world!
  *
  */
+@EnableScheduling
 @ComponentScan(basePackages = { "springguide.securing.webapps.storage", "springguide.securing.webapps",
 		"springguide.securing.webapps.hello" })
 @SpringBootApplication(scanBasePackages = { "springguide.securing.webapps", "springguide.securing.webapps.hello",
