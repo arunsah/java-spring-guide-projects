@@ -20,6 +20,7 @@ public class UserInfoDAO implements IUserInfoDAO {
 		if(!list.isEmpty()) {
 			activeUserInfo = (UserInfo)list.get(0);
 		}
+		System.out.println("activeUserInfo: " + activeUserInfo);
 		return activeUserInfo;
 	}
 } 

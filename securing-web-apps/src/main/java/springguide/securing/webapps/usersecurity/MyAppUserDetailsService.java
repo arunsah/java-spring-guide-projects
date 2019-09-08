@@ -19,11 +19,13 @@ public class MyAppUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userName)
 			throws UsernameNotFoundException {
 		UserInfo activeUserInfo = userInfoDAO.getActiveUser(userName);
+		
+		System.out.println("loadUserByUsername: activeUserInfo :: " + activeUserInfo);
 		GrantedAuthority authority = new SimpleGrantedAuthority(activeUserInfo.getRole());
 		UserDetails userDetails = (UserDetails)new User(activeUserInfo.getUserName(),
 				activeUserInfo.getPassword(), Arrays.asList(authority));
 		
-		System.out.println("loadUserByUsername: activeUserInfo :: " + activeUserInfo);
+		
 		return userDetails;
 	}
 }

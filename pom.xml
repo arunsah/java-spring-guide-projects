@@ -10,5 +10,6 @@
     <module>consuming-restful-webservice</module>
     <module>securing-web-apps</module>
     <module>accessing-mysql</module>
+    <module>securing-web-apps-mysql</module>
   </modules>
 </project>
