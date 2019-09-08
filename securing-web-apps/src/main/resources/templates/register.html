@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Register Page for Spring Security Example</title>
+</head>
+
+<body>
+	<h1>Welcome to Register Page for Spring Security Example</h1>
+	<p>Please enter your details:</p>
+
+	<div th:if="${param.error}">Invalid username or password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+
+	<form th:action="@{/register}" method="post">
+
+		<table cellspacing="2" cellpadding="2" border="0" align="center">
+
+			<tr>
+				<td colspan="2">Enter the data here</td>
+			</tr>
+
+
+			<tr>
+				<td><label for="username">Username: </label></td>
+				<td><input type="text" value="admin" id="username"
+					name="username" /></td>
+			</tr>
+
+
+			<tr>
+				<td><label for="password">Password: </label></td>
+				<td><input type="password" value="admin" id="password"
+					name="password" /></td>
+			</tr>
+
+
+
+			<tr>
+				<td><label for="username">Email: </label></td>
+				<td><input type="text" value="" id="eail" name="email" /></td>
+			</tr>
+
+
+			<tr>
+				<td><label for="username">Role: </label></td>
+				<td><input type="text" value="USER" id="role" name="role" /></td>
+			</tr>
+
+
+			<tr>
+				<td colspan="2"><input type="submit" value="Login" /></td>
+
+			</tr>
+
+		</table>
+
+	</form>
+	
+	<p>Click <a th:href="@{/hello}">here</a> to login.</p>
+
+</body>
+</html>
